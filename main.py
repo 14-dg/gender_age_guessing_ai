@@ -1,3 +1,2 @@
-print("servus")
-print("moin")
-print("servus")
+import tensorflow as tf
+from tensorflow import keras
