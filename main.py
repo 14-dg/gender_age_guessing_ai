@@ -1,2 +1,2 @@
 print("servus")
-print()
+print("test")
