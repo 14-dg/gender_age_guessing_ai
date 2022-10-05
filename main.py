@@ -1,2 +1,2 @@
-print("servus")
-print("test")
+import deine_mudda as a
+print(a)
