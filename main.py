@@ -8,7 +8,7 @@ for file in pictures: # Für jeder Bild
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
     try :
-        for ( x , y , w , h ) in faces:
+        for (x, y, w, h) in faces:
             gray_face = img[y:y + h, x:x + w]
         normiert = cv2.resize (gray_face, (128,128))
         cv2.imwrite ("Faces/" + str(img_number) + ".jpg " , normiert)
