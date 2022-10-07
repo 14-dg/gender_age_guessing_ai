@@ -1,26 +1,17 @@
 import cv2
-import os
-import tensorflow
-import dlib
+import glob
 
-img = cv2.imread(os.path.join('Assets', 'test.jpg'))
-grayimg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-face_cascade = dlib.get_frontal_face_detector()
-
-#face_cascadecv2 = cv2.CascadeClassifier('haarcascades_models/haarcascade_frontalface_default.xml')
-#facescv2 = face_cascadecv2.detectMultiScale(grayimg, )
-
-
-
-
-
-def save_img(img, name, bbox, width = 144, height = 144):
-    x, y, w, h, = bbox
-    image = img[y: h, x: w]
-    image = cv2.resize(image, (width, height))
-    cv2.imwrite(name + ".jpg", image)
-
-def rec_faces():
-    faces = face_cascade(grayimg)
-    for counter, face in enumerate(faces):
-        x1, x2, y1, y2 = face
+face_cascade = cv2.CascadeClassifier('haarcascades_models/haarcascade_frontalface_default.xml') # Holt die Daten von cv2, mit denen man die Gesicher erkennen kann
+pictures = glob.glob('./Pictures/*.jpg') # Holt die Bilder (nur .jpg) aus dem Ordner "Pictures"
+for file in pictures[]: # Für jeder Bild
+    img = cv2.imread(file, 1)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    try :
+        for ( x , y , w , h ) in faces :
+            roi_color = img [ y : y + h , x : x + w ]
+        normiert = cv2.resize (roi_color, (128,128))
+        cv2.imwrite (" extracted_faces / " + str (img_number) + ".jpg " , normiert)
+    except :
+        print ("Kein Gesicht gefunden")
+    img_number = img_number + 1
