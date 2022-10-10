@@ -1,7 +1,7 @@
 import cv2
 import glob
 
-face_cascade = cv2.CascadeClassifier('haarcascades_models/haarcascade_frontalface_default.xml') # Holt die Daten von cv2, mit denen man die Gesicher erkennen kann
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml') # Holt die Daten von cv2, mit denen man die Gesicher erkennen kann
 pictures = glob.glob('./Pictures/*.jpg') # Holt die Bilder (nur .jpg) aus dem Ordner "Pictures"
 for file in pictures: # Für jedes Bild
     img = cv2.imread(file, 1) # Das Bild wird eingelesen
