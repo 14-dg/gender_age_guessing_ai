@@ -13,6 +13,6 @@ for file in pictures: # Für jedes Bild
             face = img[y:y + h, x:x + w] # Wenn es ein Gesicht gibt, wird das aus dem ursprünglichen Bild raus geschnitten
             normiert = cv2.resize (face, (128,128)) # Dann wird es auf 128² zugeschnitten (anscheinend später für die KI relevant)
             cv2.imwrite ("Faces/" + str(img_number) + ".jpg " , normiert) # Dann wird das Gesicht gespeichert
+            img_number = img_number + 1
     except :
         print ("Kein Gesicht gefunden") # Falls es kein Gesicht gibt, wird die Nachricht gedruckt
-    img_number = img_number + 1
