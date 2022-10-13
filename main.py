@@ -2,7 +2,7 @@ import cv2
 import glob
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml') # Holt die Daten von cv2, mit denen man die Gesicher erkennen kann
-eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
+eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml') # Holt die Daten von cv2, mit denen man die Augen erkennen kann
 pictures = glob.glob('./Pictures/*.jpg') # Holt die Bilder (nur .jpg) aus dem Ordner "Pictures"
 
 eyes_on_face = False #betrachtet ob ein Auge im Bereich des Gesichtes gefunden wurde True-> Gesicht wird anerkannt
