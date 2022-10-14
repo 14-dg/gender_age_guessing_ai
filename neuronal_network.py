@@ -12,7 +12,7 @@ model_age = tf.keras.models.Sequential([
     tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(512, activation = 'relu'),
     tf.keras.layers.Dense(512, activation = 'relu'),
-    tf.keras.layers.Dense(10, activation = 'softmax')])
+    tf.keras.layers.Dense(100, activation = 'softmax')])
 model_age.compile(optimizer = 'adam', loss = 'sparse_categorical_crossentropy', metrics = ['accuracy'])
 model_age.fit(faces, ages, epochs = 50)
 
