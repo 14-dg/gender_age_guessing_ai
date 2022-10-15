@@ -30,7 +30,7 @@ for file in pictures: # Für jedes Bild
         if eyes_on_face: # Wenn das Gesicht anerkannt wird zeigt er das Gesicht
             # cv2.imshow(f"face: {img_number}", normiert)
             # cv2.waitKey(0) # Wartet darauf, dass das Fenster geschlossen wird
-            cv2.imwrite ("Faces/" + str(img_number) + ".jpg " , normiert) # Dann wird das Gesicht gespeichert
+            cv2.imwrite("Faces/" + str(img_number) + ".jpg " , normiert) # Dann wird das Gesicht gespeichert
             eyes_on_face = False # Setzt die Variable wieder auf False, damit beim nächsten erkannten Gesicht wieder überprüft wird, ob das Gesicht anerkannt werden soll
             img_number = img_number + 1
 
