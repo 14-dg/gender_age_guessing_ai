@@ -1,4 +1,5 @@
 import tensorflow as tf
+import pickle
 
 faces = 1 # Müssen alle Gesichter als 128² Schwarzweiß Bild sein
 ages = 1 # Muss das Alter der Menschen haben
@@ -27,3 +28,6 @@ model_gender = tf.keras.models.Sequential([
     tf.keras.layers.Dense(2, activation = 'softmax')])
 model_gender.compile(optimizer = 'adam', loss = 'sparse_categorical_crossentropy', metrics = ['accuracy'])
 model_gender.fit(faces, genders, epochs = 50)
+
+pickle.dump(model_age, open('model_age.pkl', 'wb'))
+pickle.dump(model_gender, open('model_gender.pkl', 'wb'))
