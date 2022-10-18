@@ -5,8 +5,7 @@ import cv2
 def get_imgs_from_filenames(pictures)->list:
     imgs = []
     for file in pictures:
-        img = cv2.imread(file, 1)
-        img = cv2.resize(img, (128, 128))
+        img = cv2.resize(cv2.imread(file, 1), (128, 128))
         imgs.append(img)
     return imgs
 
@@ -25,5 +24,6 @@ def get_pictures_age()->list:
 if __name__ == "__main__":
     imgs = get_pictures_gender()
     for img in imgs:
+        print(img)
         cv2.imshow("test", img)
         cv2.waitKey(0)
