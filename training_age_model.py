@@ -1,8 +1,10 @@
 import tensorflow as tf
 import pickle
 
-faces = 1 # Müssen alle Gesichter als 128² Schwarzweiß Bild sein
-ages = 1 # Muss das Alter der Menschen haben
+import load_faces as load_f
+
+faces = load_f.get_pictures_age()
+ages = 1
 
 model_age = tf.keras.models.Sequential([
     tf.keras.layers.Conv2D(30, (3, 3), activation = 'relu', input_shape = (128, 128, 1)),
