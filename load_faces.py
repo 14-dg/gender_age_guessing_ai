@@ -6,6 +6,7 @@ def get_imgs_from_filenames(pictures)->list:
     imgs = []
     for file in pictures:
         img = cv2.imread(file, 1)
+        img = cv2.resize(img, (128, 128))
         imgs.append(img)
     return imgs
 
