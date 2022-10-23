@@ -16,7 +16,7 @@ def get_imgs_from_filenames(pictures)->list:
 
 def get_pictures_gender()-> tuple[list, list]:
     """
-    return imgs in array form
+    returns pictures, genders
     male -> 1 female -> 0
     """
     def get_pictures_gender_male()-> tuple[list, list]:
@@ -34,8 +34,7 @@ def get_pictures_gender()-> tuple[list, list]:
 
 def get_pictures_age()-> tuple[list, list]:
     """
-    return imgs in array form
-    ages -> represent the age of the person
+    returns pictures, ages
     """
     def get_pictures_certain_ages(ages) -> tuple[list, list]:
         """returns all pictures from all ages and the corresponding ages
