@@ -1,4 +1,6 @@
 import glob
+import os
+import itertools
 import cv2
 
 
@@ -35,12 +37,32 @@ def get_pictures_age()-> tuple[list, list]:
     return imgs in array form
     ages -> represent the age of the person
     """
-    pictures = glob.glob('./Faces/Training/Age*.jpg')
-    ages = []
-    return get_imgs_from_filenames(pictures), ages
+    def get_pictures_certain_ages(ages) -> tuple[list, list]:
+        """returns all pictures from all ages and the corresponding ages
+        """
+        ages_pictures = []
+        pictures = []
+        for age in ages:
+            # appends the images from the folders
+            # folder Age/0 -> all files  in there
+            pictures.append(get_imgs_from_filenames(glob.glob(f'./Faces/Training/Age/{age}/*.jpg')))
+            #appends the corresponding ages
+            ages_pictures.extend([age]*len(pictures[-1]))
+        # flattens the list of pictures, so they are in one big one dimensional array 
+        return list(itertools.chain(*pictures)), ages_pictures
+
+    def get_available_ages() -> list:
+        path = "./Faces/Training/Age/"    
+        return [int(file) for file in os.listdir(path)]
+    
+    ages = get_available_ages()
+    pictures, ages_pictures = get_pictures_certain_ages(ages)
+       
+    return pictures, ages_pictures
 
 if __name__ == "__main__":
-    imgs, genders = get_pictures_gender()
+    #imgs, genders = get_pictures_gender()
+    imgs, ages = get_pictures_age()
     for ind, img in enumerate(imgs):
-        cv2.imshow(f"The person is a {genders[ind]}", img)
+        cv2.imshow(f"The person is {ages[ind]}", img)
         cv2.waitKey(0)
