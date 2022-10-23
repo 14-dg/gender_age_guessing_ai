@@ -15,12 +15,12 @@ male -> 1 female -> 0
 '''
 def get_pictures_gender()-> tuple[list, list]:
     def get_pictures_gender_male()-> tuple[list, list]:
-        pictures = glob.glob('./Faces/Training/Gender/male*.jpg')
+        pictures = glob.glob('./Faces/Training/Gender/male/*.jpg')
         genders = [1]*len(pictures)
         return get_imgs_from_filenames(pictures), genders
 
     def get_pictures_gender_female()-> tuple[list, list]:
-        pictures = glob.glob('./Faces/Training/Gender/female*.jpg')
+        pictures = glob.glob('./Faces/Training/Gender/female/*.jpg')
         genders = [0]*len(pictures)
         return get_imgs_from_filenames(pictures), genders
     pictures_male, genders_male = get_pictures_gender_male()
@@ -33,7 +33,6 @@ def get_pictures_age()-> list:
 
 if __name__ == "__main__":
     imgs, genders = get_pictures_gender()
-    for img in imgs:
-        print(img)
-        cv2.imshow("test", img)
+    for ind, img in enumerate(imgs):
+        cv2.imshow(f"The person is a {genders[ind]}", img)
         cv2.waitKey(0)
