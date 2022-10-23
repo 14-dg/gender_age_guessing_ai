@@ -1,9 +1,9 @@
 import tensorflow as tf
 import pickle
 
-import load_faces as load_f
+import load_faces_training as load_f_t
 
-faces = load_f.get_pictures_gender()
+faces = load_f_t.get_pictures_gender()
 genders = 1
 
 model_gender = tf.keras.models.Sequential([

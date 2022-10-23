@@ -13,16 +13,20 @@ def get_imgs_from_filenames(pictures)->list:
 return imgs in array form
 to access one single img use a for loop
 '''
-def get_pictures_gender()->list:
-    pictures = glob.glob('./Pictures/*.jpg')
+def get_pictures_gender_male()->list:
+    pictures = glob.glob('./Faces/Testing/Gender/male*.jpg')
+    return get_imgs_from_filenames(pictures)
+
+def get_pictures_gender_female()->list:
+    pictures = glob.glob('./Faces/Testing/Gender/female*.jpg')
     return get_imgs_from_filenames(pictures)
 
 def get_pictures_age()->list:
-    pictures = glob.glob('./Pictures/*.jpg')
+    pictures = glob.glob('./Faces/Testing/Age*.jpg')
     return get_imgs_from_filenames(pictures)
 
 if __name__ == "__main__":
-    imgs = get_pictures_gender()
+    imgs = get_pictures_gender_male()
     for img in imgs:
         print(img)
         cv2.imshow("test", img)

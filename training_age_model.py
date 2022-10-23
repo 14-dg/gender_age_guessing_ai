@@ -1,9 +1,9 @@
 import tensorflow as tf
 import pickle
 
-import load_faces as load_f
+import load_faces_training as load_f_t
 
-faces = load_f.get_pictures_age()
+faces = load_f_t.get_pictures_age()
 ages = 1
 
 model_age = tf.keras.models.Sequential([
