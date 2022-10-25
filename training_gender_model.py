@@ -1,7 +1,7 @@
 import tensorflow as tf
 import pickle
 
-import load_faces_training as load_f_t
+import load_faces as load_f_t
 
 faces = load_f_t.get_pictures_gender()
 genders = 1

@@ -1,5 +1,5 @@
 import pickle
-import load_faces_testing as load_f_t
+import load_faces as load_f
 
 face = 1 #muss ein Bild von einem Gesicht sein
 age = 1 #muss das Alter der Person beinhalten
