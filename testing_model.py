@@ -1,9 +1,9 @@
 import pickle
 import load_faces as load_f
 
-face = 1 #muss ein Bild von einem Gesicht sein
-age = 1 #muss das Alter der Person beinhalten
-gender = 1 #muss das Geschlecht der Person beinhalten
+#testing the age model
+faces, ages = load_f.get_pictures_age(test_train="Testing")
+face, age = faces[0], ages[0]
 
 #loads the models
 model_age = pickle.load(open('model_age.pkl', 'rb'))

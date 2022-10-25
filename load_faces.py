@@ -2,6 +2,7 @@ import glob
 import os
 import itertools
 import cv2
+import numpy as np
 
 
 def get_imgs_from_filenames(pictures)->list:
@@ -16,7 +17,8 @@ def get_imgs_from_filenames(pictures)->list:
 
 def get_pictures_gender(test_train="Training")-> tuple[list, list]:
     """
-    returns pictures, genders
+    input test_train can be "Training" or "Testing"\n
+    returns pictures, genders\n
     male -> 1 female -> 0
     """
     def get_pictures_gender_male()-> tuple[list, list]:
@@ -34,6 +36,7 @@ def get_pictures_gender(test_train="Training")-> tuple[list, list]:
 
 def get_pictures_age(test_train="Training")-> tuple[list, list]:
     """
+    input test_train can be "Training" or "Testing"\n
     returns pictures, ages
     """
     def get_pictures_certain_ages(ages) -> tuple[list, list]:

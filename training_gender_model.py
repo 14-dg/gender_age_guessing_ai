@@ -1,10 +1,9 @@
 import tensorflow as tf
 import pickle
 
-import load_faces as load_f_t
+import load_faces as load_f
 
-faces = load_f_t.get_pictures_gender()
-genders = 1
+faces, genders = load_f.get_pictures_gender(test_train="Training")
 
 model_gender = tf.keras.models.Sequential([
     tf.keras.layers.Conv2D(30, (3, 3), activation = 'relu', input_shape = (128, 128, 1)),
