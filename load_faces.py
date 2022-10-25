@@ -21,7 +21,7 @@ def get_pictures_gender(test_train="Training")-> tuple[list, list]:
     returns pictures, genders\n
     male -> 1 female -> 0
     """
-    def get_pictures_gender_male()-> tuple[list, list]:
+    def get_pictures_gender_male()-> tuple[np.ndarray, np.ndarray]:
         pictures = glob.glob(f'./Faces/{test_train}/Gender/male/*.jpg')
         genders = [1]*len(pictures)
         return get_imgs_from_filenames(pictures), genders
@@ -32,9 +32,9 @@ def get_pictures_gender(test_train="Training")-> tuple[list, list]:
         return get_imgs_from_filenames(pictures), genders
     pictures_male, genders_male = get_pictures_gender_male()
     pictures_female, genders_female = get_pictures_gender_female()
-    return pictures_male+pictures_female, genders_male+genders_female
+    return np.array(pictures_male+pictures_female), np.array(genders_male+genders_female)
 
-def get_pictures_age(test_train="Training")-> tuple[list, list]:
+def get_pictures_age(test_train="Training")-> tuple[np.ndarray, np.ndarray]:
     """
     input test_train can be "Training" or "Testing"\n
     returns pictures, ages
@@ -60,7 +60,7 @@ def get_pictures_age(test_train="Training")-> tuple[list, list]:
     ages = get_available_ages()
     pictures, ages_pictures = get_pictures_certain_ages(ages)
        
-    return pictures, ages_pictures
+    return np.array(pictures), np.array(ages_pictures)
 
 if __name__ == "__main__":
     imgs, genders = get_pictures_gender()
