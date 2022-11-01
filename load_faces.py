@@ -47,15 +47,15 @@ def get_pictures_age(test_train="Training")-> tuple[np.ndarray, np.ndarray]:
         for age in ages:
             # appends the images from the folders
             # folder Age/0 -> all files  in there
-            pictures.append(get_imgs_from_filenames(glob.glob(f'./Faces/{test_train}/Age/{age}/*.jpg')))
+            pictures.append(get_imgs_from_filenames(glob.glob(f'./Faces/{test_train}/Age/{age}/*.png')))
             #appends the corresponding ages
-            ages_pictures.extend([age]*len(pictures[-1]))
+            ages_pictures.extend([int(age)]*len(pictures[-1]))
         # flattens the list of pictures, so they are in one big one dimensional array 
         return list(itertools.chain(*pictures)), ages_pictures
 
     def get_available_ages() -> list:
         path = f"./Faces/{test_train}/Age/"    
-        return [int(file) for file in os.listdir(path)]
+        return [file for file in os.listdir(path)]
     
     ages = get_available_ages()
     pictures, ages_pictures = get_pictures_certain_ages(ages)
@@ -63,8 +63,8 @@ def get_pictures_age(test_train="Training")-> tuple[np.ndarray, np.ndarray]:
     return np.array(pictures), np.array(ages_pictures)
 
 if __name__ == "__main__":
-    imgs, genders = get_pictures_gender()
-    #imgs, ages = get_pictures_age()
+    #imgs, genders = get_pictures_gender()
+    imgs, ages = get_pictures_age()
     for ind, img in enumerate(imgs):
-        cv2.imshow(f"The person is {genders[ind]}", img)
+        cv2.imshow(f"The person is {ages[ind]}", img)
         cv2.waitKey(0)
