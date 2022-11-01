@@ -15,13 +15,13 @@ def get_imgs_from_filenames(pictures)->list:
     return imgs
 
 
-def get_pictures_gender(test_train="Training")-> tuple[list, list]:
+def get_pictures_gender(test_train="Training")-> tuple[np.ndarray, np.ndarray]:
     """
     input test_train can be "Training" or "Testing"\n
     returns pictures, genders\n
     male -> 1 female -> 0
     """
-    def get_pictures_gender_male()-> tuple[np.ndarray, np.ndarray]:
+    def get_pictures_gender_male()-> tuple[list, list]:
         pictures = glob.glob(f'./Faces/{test_train}/Gender/male/*.jpg')
         genders = [1]*len(pictures)
         return get_imgs_from_filenames(pictures), genders

@@ -1,6 +1,3 @@
-import pickle
-import numpy as np
-
 import load_faces as load_f
 
 import os
@@ -21,4 +18,4 @@ model_age = tf.keras.models.Sequential([
 model_age.compile(optimizer = 'adam', loss = 'sparse_categorical_crossentropy', metrics = ['accuracy'])
 model_age.fit(faces, ages, epochs = 50)
 
-pickle.dump(model_age, open('model_age.pkl', 'wb'))
+model_age.save('saved_models/model_age.h5')

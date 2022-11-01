@@ -1,6 +1,3 @@
-import pickle
-import numpy as np
-
 import load_faces as load_f
 
 import os
@@ -21,4 +18,4 @@ model_gender = tf.keras.models.Sequential([
 model_gender.compile(optimizer = 'adam', loss = 'sparse_categorical_crossentropy', metrics = ['accuracy'])
 model_gender.fit(faces, genders, epochs = 50)
 
-pickle.dump(model_gender, open('model_gender.pkl', 'wb'))
+model_gender.save('saved_models/model_gender.h5')
